@@ -25,9 +25,7 @@ public class MyContentProvider extends ContentProvider {
     }
 
     public MyContentProvider() {
-
-
-
+        
 
     }
 
