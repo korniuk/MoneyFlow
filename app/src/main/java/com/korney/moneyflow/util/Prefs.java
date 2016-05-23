@@ -3,7 +3,7 @@ package com.korney.moneyflow.util;
 import android.net.Uri;
 
 /**
- * Created by Korney on 13.04.2016.
+ * Created on 13.04.2016.
  */
 public class Prefs {
 

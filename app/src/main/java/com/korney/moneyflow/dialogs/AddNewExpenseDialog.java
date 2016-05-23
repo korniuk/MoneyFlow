@@ -21,11 +21,11 @@ public class AddNewExpenseDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_add_expency, null,true);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_add_expense, null,true);
         //TODO set adapter for AutocompleteTextView
         builder.setView(view)
-                .setMessage(R.string.message_add_new_expency_dialog)
-                .setTitle(R.string.title_add_new_expency_dialog)
+                .setMessage(R.string.message_add_new_expense_dialog)
+                .setTitle(R.string.title_add_new_expense_dialog)
                 .setPositiveButton(R.string.positive_button_add_new_expency_dialog,
                         new DialogInterface.OnClickListener() {
                     @Override
