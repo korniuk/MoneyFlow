@@ -13,7 +13,7 @@ import com.korney.moneyflow.R;
 import com.korney.moneyflow.services.MyIntentService;
 
 /**
- * Created on 16.05.2016.
+ * Created by Korney on 16.05.2016.
  */
 public class AddNewExpenseDialog extends DialogFragment {
 
