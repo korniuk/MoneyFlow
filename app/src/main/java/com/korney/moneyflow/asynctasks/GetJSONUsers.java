@@ -1,6 +1,7 @@
 package com.korney.moneyflow.asynctasks;
 
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.AsyncTask;
@@ -23,6 +24,16 @@ import java.util.Arrays;
  * Created on 13.04.2016.
  */
 public class GetJSONUsers extends AsyncTask<String,Void,Cursor> {
+
+    private Activity mActivity;
+
+    private String email, password;
+
+    public GetJSONUsers(Activity mActivity, String password, String email) {
+        this.mActivity = mActivity;
+        this.password = password;
+        this.email = email;
+    }
 
     @Override
     protected Cursor doInBackground(String... params) {

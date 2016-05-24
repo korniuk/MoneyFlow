@@ -26,6 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.ExpensesActivity"
+            android:parentActivityName=".activities.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.DashboardActivity">
+
+            </meta-data>
+        </activity>
 
         <service
             android:name=".services.MyIntentService"
@@ -35,7 +44,8 @@
             android:name=".provider.MyContentProvider"
             android:authorities="com.korney.moneyflow.provider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
+
     </application>
 
 </manifest>

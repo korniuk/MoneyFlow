@@ -19,7 +19,6 @@ import java.util.Calendar;
 public class MyIntentService extends IntentService {
 
     private static final String ACTION_INSERT_EXPENSE = "com.korney.moneyflow.services.action.INSERT_EXPENCY";
-
     private static final String EXTRA_INSERT_EXPENSE_NAME = "com.korney.moneyflow.services.action.INSERT_EXPENCY_NAME";
     private static final String EXTRA_INSERT_EXPENSE_VOLUME = "com.korney.moneyflow.services.action.INSERT_EXPENCY_VOLUME";
 
@@ -29,7 +28,7 @@ public class MyIntentService extends IntentService {
     }
 
 
-    public static void startActionInsertExpency(Context context,String name, int volume){
+    public static void startActionInsertExpency(Context context, String name, Double volume){
         Intent intent = new Intent(context, MyIntentService.class);
         intent.setAction(ACTION_INSERT_EXPENSE);
         intent.putExtra(EXTRA_INSERT_EXPENSE_NAME,name);
