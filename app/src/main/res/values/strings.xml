@@ -14,12 +14,13 @@
         completions."
     </string>
     <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="item_menu_expency_text">Add expency</string>
+    <string name="item_menu_expense_text">Add expency</string>
     <string name="message_add_new_expense_dialog">Add new expency</string>
     <string name="title_add_new_expense_dialog">Add expency</string>
-    <string name="positive_button_add_new_expency_dialog">Add</string>
-    <string name="negative_button_add_new_expency_dialog">Dismiss</string>
+    <string name="positive_button_add_new_expense_dialog">Add</string>
+    <string name="negative_button_add_new_expense_dialog">Dismiss</string>
     <string name="hint_name">name</string>
     <string name="hint_volume">volume</string>
     <string name="button_show_expenses_text">Show Expenses</string>
+    <string name="critical">Critical</string>
 </resources>

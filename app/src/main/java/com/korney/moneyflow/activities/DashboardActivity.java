@@ -17,7 +17,7 @@ import com.korney.moneyflow.R;
 import com.korney.moneyflow.dialogs.AddNewExpenseDialog;
 import com.korney.moneyflow.util.Prefs;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnDashboardShowExpenses;
 
@@ -29,6 +29,7 @@ public class DashboardActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         btnDashboardShowExpenses = (Button) findViewById(R.id.btnDashBoardShowExpenses);
+        btnDashboardShowExpenses.setOnClickListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +54,7 @@ public class DashboardActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.item_expency:
+            case R.id.item_expense:
                 AddNewExpenseDialog addNewExpenseDialog = new AddNewExpenseDialog();
                 addNewExpenseDialog.show(getSupportFragmentManager(), "addExpense");
                 //Toast.makeText(this, "Click on expense", Toast.LENGTH_SHORT).show();
@@ -71,35 +72,35 @@ public class DashboardActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ExpensesActivity.class);
                 startActivity(intent);
 
-                /* if (c != null) {
-                    if (c.moveToFirst()) {
-                        do {
-                            Log.d(Prefs.LOG_TAG, c.getString(c.getColumnIndex(Prefs.FIELD_ID)) + ", " +
-                                    c.getColumnIndex(Prefs.EXPENSE_FIELD_ID_PASSIVE) + ", " +
-                                    c.getColumnIndex(Prefs.EXPENSE_FIELD_DATE) + "," +
-                                    c.getColumnIndex(Prefs.EXPENSE_FIELD_VOLUME));
-                        } while (c.moveToNext());
-                    } else
-                        Log.d(Prefs.LOG_TAG, "Table:" + Prefs.TABLE_NAME_EXPENSES + "it contains o rows");
-                    c.close();
-                }*/
+//                 if (c != null) {
+//                    if (c.moveToFirst()) {
+//                        do {
+//                            Log.d(Prefs.LOG_TAG, c.getString(c.getColumnIndex(Prefs.FIELD_ID)) + ", " +
+//                                    c.getColumnIndex(Prefs.EXPENSES_FIELD_ID_PASSIVE) + ", " +
+//                                    c.getColumnIndex(Prefs.EXPENSES_FIELD_DATE) + "," +
+//                                    c.getColumnIndex(Prefs.EXPENSES_FIELD_VOLUME));
+//                        } while (c.moveToNext());
+//                    } else
+//                        Log.d(Prefs.LOG_TAG, "Table:" + Prefs.TABLE_NAME_EXPENSES + "it contains o rows");
+//                    c.close();
+//                }
                 break;
         }
     }
 
-/*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if ((resultCode == Activity.RESULT_OK && requestCode == 1)) {
-            Cursor c = getContentResolver().query(data.getData(), new String[]{ContactsContract.Contacts.DISPLAY_NAME}, null, null, null);
-            if (c.moveToFirst()) {
-                int columnIndex = c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
-                String[] columnName = c.getColumnNames();
-                for (int i = 0; i < columnName.length; i++) {
-                    i = c.getColumnIndex(columnName[i]);
-                    String s = c.getString(i);
-                }
-            }
-        }
-    }*/
+//@Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if ((resultCode == Activity.RESULT_OK && requestCode == 1)) {
+//            Cursor c = getContentResolver().query(data.getData(), new String[]{ContactsContract.Contacts.DISPLAY_NAME}, null, null, null);
+//            if (c.moveToFirst()) {
+//                int columnIndex = c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+//                String[] columnName = c.getColumnNames();
+//                for (int i = 0; i < columnName.length; i++) {
+//                    i = c.getColumnIndex(columnName[i]);
+//                    String s = c.getString(i);
+//                }
+//            }
+//        }
+//    }
 
 }

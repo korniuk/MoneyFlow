@@ -8,8 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.korney.moneyflow.R;
 import com.korney.moneyflow.services.MyIntentService;
@@ -21,6 +21,7 @@ public class AddNewExpenseDialog extends DialogFragment {
 
     private EditText tvValue;
     private AutoCompleteTextView acName;
+    CheckBox chbCritical;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -31,20 +32,20 @@ public class AddNewExpenseDialog extends DialogFragment {
 
         tvValue = (EditText) view.findViewById(R.id.etVolumeOfExpency);
         acName = (AutoCompleteTextView) view.findViewById(R.id.acNameOfExpency);
+        chbCritical = (CheckBox)view.findViewById(R.id.chbCriticalExpense);
         builder.setView(view)
                 .setMessage(R.string.message_add_new_expense_dialog)
                 .setTitle(R.string.title_add_new_expense_dialog)
-                .setPositiveButton(R.string.positive_button_add_new_expency_dialog,
+                .setPositiveButton(R.string.positive_button_add_new_expense_dialog,
                         new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String expenseValue = tvValue.getText().toString();
-                        if (expenseValue.matches("[0-9]*")) {
-                            addNewExpense(acName.getText().toString(), Double.parseDouble(expenseValue));
-                        }
+
+                            addNewExpense();
+
                     }
                 })
-                .setNegativeButton(R.string.negative_button_add_new_expency_dialog,
+                .setNegativeButton(R.string.negative_button_add_new_expense_dialog,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -55,8 +56,13 @@ public class AddNewExpenseDialog extends DialogFragment {
         return builder.create();
     }
 
-    private void addNewExpense(String name, Double value) {
-        Toast.makeText(getActivity(), "Add from dialog", Toast.LENGTH_SHORT).show();
-        MyIntentService.startActionInsertExpency(getActivity(), name, value);
+    private void addNewExpense() {
+        int critical = 0;
+        String name = acName.getText().toString();
+       Double volume = Double.valueOf(tvValue.getText().toString());
+        if (chbCritical.isChecked())
+            critical = 1;
+
+        MyIntentService.startActionInsertExpense(getActivity(),name, volume, critical);
     }
 }

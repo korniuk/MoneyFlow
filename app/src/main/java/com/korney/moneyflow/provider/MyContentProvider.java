@@ -19,9 +19,14 @@ public class MyContentProvider extends ContentProvider {
 
     private static UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int URI_CODE_EXPENSE = 1;
+    public static final int URI_EXPENSE_NAME_CODE = 2;
 
     static{
-        uriMatcher.addURI(Prefs.URI_AUTHORITIES, Prefs.URI_TYPE_EXPENSE, URI_CODE_EXPENSE);
+        uriMatcher.addURI(Prefs.URI_AUTHORITIES,
+                Prefs.URI_TYPE_EXPENSE, URI_CODE_EXPENSE);
+
+        uriMatcher.addURI(Prefs.URI_EXPENSES_NAMES_AUTHORITIES,
+                Prefs.URI_EXPENSES_NAMES_TYPE, URI_EXPENSE_NAME_CODE);
     }
 
     public MyContentProvider() {
@@ -60,8 +65,13 @@ public class MyContentProvider extends ContentProvider {
                 id = database.insert(Prefs.TABLE_NAME_EXPENSES, null, values);
                 insertUri = ContentUris.withAppendedId(uri, id);
                 break;
-        }
 
+            case URI_EXPENSE_NAME_CODE:
+                id = database.insert(Prefs.TABLE_NAME_EXPENSE_NAMES, null, values);
+                insertUri = ContentUris.withAppendedId(Prefs.URI_EXPENSES_NAMES, id);
+                getContext().getContentResolver().notifyChange(insertUri, null);
+                break;
+        }
 
         return insertUri;
     }
@@ -78,6 +88,10 @@ public class MyContentProvider extends ContentProvider {
             case URI_CODE_EXPENSE:
                 cursor = database.query(Prefs.TABLE_NAME_EXPENSES,
                                         projection, selection, selectionArgs, null, null, sortOrder);
+                break;
+            case URI_EXPENSE_NAME_CODE:
+                cursor = database.query(Prefs.TABLE_NAME_EXPENSE_NAMES,projection,
+                        selection,selectionArgs,null,null,sortOrder);
                 break;
         }return cursor;
     }
